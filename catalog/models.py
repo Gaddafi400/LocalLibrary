@@ -1,11 +1,9 @@
 from django.db import models
-
-# Create your models here.
-
+from django.conf import settings
 from django.urls import reverse  # To generate URLS by reversing URL patterns
 import uuid  # Required for unique book instances
-from datetime import date
 from django.contrib.auth.models import User  # Required to assign User as a borrower
+from datetime import date
 
 
 class Genre(models.Model):
@@ -35,7 +33,6 @@ class Book(models.Model):
     title = models.CharField(max_length=200)
     author = models.ForeignKey('Author', on_delete=models.SET_NULL, null=True)
     # Foreign Key used because book can only have one author, but authors can have multiple books
-    # Author as a string rather than object because it hasn't been declared yet in file.
     summary = models.TextField(max_length=1000, help_text="Enter a brief description of the book")
     isbn = models.CharField('ISBN', max_length=13,
                             unique=True,
@@ -72,7 +69,7 @@ class BookInstance(models.Model):
     book = models.ForeignKey('Book', on_delete=models.RESTRICT, null=True)
     imprint = models.CharField(max_length=200)
     due_back = models.DateField(null=True, blank=True)
-    borrower = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    borrower = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
 
     @property
     def is_overdue(self):
