@@ -1,11 +1,24 @@
+a:link {
+    text-decoration: none;
+}
 
-a:link { text-decoration: none; }
-a:visited { text-decoration: none; }
-a:hover { text-decoration: none; }
-a:active { text-decoration: none; }
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
 
 .sidebar-nav {
-  margin-top: 20px;
-  padding: 0;
-  list-style: none;
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
 }
+
+
