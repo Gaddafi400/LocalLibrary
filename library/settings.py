@@ -148,4 +148,3 @@ DATABASES['default'].update(db_from_env)
 # https://pypi.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-
